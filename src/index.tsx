@@ -1,15 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import { DeckProvider } from './context/deck'
+import { PlayerProvider } from './context/player'
+import { QuestionProvider } from './context/questions'
+import { TableProvider } from './context/table'
+import { UIProvider } from './context/UI'
+import './index.css'
 
+import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+
+    <UIProvider >
+      <PlayerProvider>
+        <QuestionProvider>
+          <DeckProvider>
+            <TableProvider >
+              <App />
+            </TableProvider>
+          </DeckProvider>
+        </QuestionProvider>
+      </PlayerProvider>
+    </UIProvider>
+
   </React.StrictMode>
 );
 
